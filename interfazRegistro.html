@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Animales</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('/bg-images/bg-4.png') no-repeat center center/cover; /* Imagen de fondo */
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .btn-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center; 
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .form {
+            background-color: white;/* Fondo blanco */
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        #loading {
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loading img {
+            width: 100px;
+            height: 100px;
+        }
+
+        #loading p {
+            color: #fff; /* Texto blanco */
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        #loading .modal-content {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="interfazPrincipal.html" class="back-link">
+            <i class="bi bi-arrow-left"></i> Volver atrás
+        </a>
+        <div class="btn-container">
+            <button id="btn-registrar-vaca" class="btn" style="background-color: white; color: #00765a;" onclick="registrarVaca()">Registrar vaca</button>
+        </div>
+        
+        <div class="form-container">
+            <div id="form-registrar-vaca" class="form">
+                <form>
+                    <div class="mb-3">
+                        <label for="codigoVaca" class="form-label">Código del Animal</label>
+                        <input type="text" class="form-control" id="codigoVaca" placeholder="Ingrese el código">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaNacimientoVaca" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNacimientoVaca" placeholder="dd/mm/aaaa">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sexoVaca" class="form-label">Sexo</label>
+                        <select class="form-select" id="sexoVaca">
+                            <option selected>Seleccione el sexo</option>
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="razaVaca" class="form-label">Raza</label>
+                        <input type="text" class="form-control" id="razaVaca" placeholder="Ingrese la raza">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pesoNacimientoVaca" class="form-label">Padres</label>
+                        <input type="text" class="form-control" id="pesoNacimientoVaca" placeholder="Ingrese el código de los padres">
+                    </div>
+                    <div class="mb-3">
+                        <label for="litrosLecheVaca" class="form-label">Cantidad de Litros de Leche por Día</label>
+                        <input type="number" class="form-control" id="litrosLecheVaca" placeholder="Ingrese la cantidad de litros">
+                    </div>
+                </form>
+            </div>
+            <div id="form-registrar-toro" class="form">
+                <form>
+                    <div class="mb-3">
+                        <label for="pesoNacer" class="form-label">Peso al nacer</label>
+                        <input type="number" class="form-control" id="pesoNacer" placeholder="Ingrese el peso al nacer en kg">
+                    </div>
+                    <div class="mb-3">
+                        <label for="pesoActual" class="form-label">Peso actual</label>
+                        <input type="number" class="form-control" id="pesoActual" placeholder="Ingrese el peso actual en kg">
+                    </div>
+                    <div class="mb-3">
+                        <label for="potrero" class="form-label">Potrero actual</label>
+                        <input type="text" class="form-control" id="potrero" placeholder="Ingrese el potrero en el que se encuentra">
+                    </div>
+                    <div class="mb-3">
+                        <label for="origen" class="form-label">De dónde viene</label>
+                        <input type="text" class="form-control" id="origen" placeholder="Ingrese el origen">
+                    </div>
+                    <div class="mb-3">
+                        <label for="numHijos" class="form-label">Hijos</label>
+                        <input type="number" class="form-control" id="numHijos" placeholder="Ingrese el número de hijos">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="loading" class="modal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center flex-column align-items-center">
+                    <img src="/bg-images/vaca.gif" alt="Cargando...">
+                    <p>Cargando...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scriptsVaca.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Usuario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            background-image: url('/bg-images/bg-2.png');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 55%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0); 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            color: black; 
+            width: 350px;
+            text-align: center; 
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .back-link i {
+            margin-right: 8px;
+        }
+
+        label {
+            display: none; 
+        }
+
+        .form-control::placeholder {
+            color: black; 
+            text-align: center; 
+        }
+
+        .form-control {
+            text-align: center; 
+        }
+
+        .form-container button {
+            width: 80px; 
+            padding: 5px;
+            background-color: #07b98e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #077058;
+        }
+
+        #loading {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading img {
+    width: 100px;
+    height: 100px;
+}
+
+#loading p {
+    color: #fff; /* Texto blanco */
+    font-size: 18px;
+    margin-top: 10px;
+}
+#loading .modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="form-container">
+            <a href="/index.html" class="back-link">
+                <i class="bi bi-arrow-left"></i> Volver atrás
+            </a>
+            <h2 style="color: white;">Registrarme</h2>
+            <form onsubmit="registrarUsuario(event)">
+                <div class="mb-3">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+                </div>
+                <div class="mb-3">
+                    <label for="correo">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico">
+                </div>
+                <div class="mb-3">
+                    <label for="contrasena">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div id="registroExito" class="modal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center flex-column align-items-center">
+                    <h5 class="text-success mb-3">Usuario registrado con éxito</h5>
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+    <div id="loading" class="modal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center flex-column align-items-center">
+                    <img src="/bg-images/vaca.gif" alt="Cargando...">
+                    <p>Cargando...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="scriptsLogin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

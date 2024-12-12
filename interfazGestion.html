@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Servicios</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #00765a;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+        }
+        .form-container h1 {
+            color: #00765a;
+        }
+        .form-container input, .form-container button {
+            margin-top: 10px;
+        }
+        .service-form-container {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-top: 250px; /* Margen superior */
+        margin-bottom: 20px; /* Margen inferior */
+        position: absolute;
+        left: -500px;
+        transition: left 0.5s ease-in-out;
+        width: 80%; /* Asegúrate de que ocupe el 100% del ancho posible */
+    }
+        .service-form-container h2 {
+            color: #00765a;
+        }
+        .service-form-container input, .service-form-container textarea {
+            margin-bottom: 10px;
+        }
+        .back-link {
+            color: #00765a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        #loading {
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #loading img {
+            width: 100px;
+            height: 100px;
+        }
+        #loading p {
+            color: #fff; /* Texto blanco */
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        #loading .modal-content {
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container" id="mainFormContainer">
+        <a href="interfazPrincipal.html" class="back-link" onclick="volverAtras()"> 
+            <i class="bi bi-arrow-left"></i> Volver atrás
+        </a>
+        <h1>Gestión de Servicios</h1>
+        <input type="text" id="codigoVaca" class="form-control" placeholder="Ingrese código">
+        <button class="btn btn-success" onclick="validarCodigo()">Validar Código</button>
+    </div>
+    
+    <div class="service-form-container" id="serviceFormContainer">
+        <a href="#" class="back-link" onclick="ocultarFormularioServicio()">
+            <i class="bi bi-arrow-left"></i> Atrás
+        </a>
+        <h2 id="serviceTitle"></h2>
+        <form id="serviceForm">
+            <!-- Etiquetas y campos del formulario con nombres descriptivos -->
+            <div class="mb-3">
+                <label for="cantidadLeche" class="form-label">Cantidad de leche por día (en litros)</label>
+                <input type="number" class="form-control" id="cantidadLeche" placeholder="Cantidad de leche por día">
+            </div>
+            
+            <div class="mb-3">
+                <label for="fechaPalpacion" class="form-label">Fecha de palpación</label>
+                <input type="date" class="form-control" id="fechaPalpacion" placeholder="Fecha de palpación">
+            </div>
+            
+            <div class="mb-3">
+                <label for="fechaParto" class="form-label">Fecha de parto</label>
+                <input type="date" class="form-control" id="fechaParto" placeholder="Fecha de parto">
+            </div>
+            
+            <div class="mb-3">
+                <label for="horaParto" class="form-label">Hora de parto</label>
+                <input type="time" class="form-control" id="horaParto" placeholder="Hora de parto">
+            </div>
+            
+            <div class="mb-3">
+                <label for="medicamentoAplicado" class="form-label">Medicamento aplicado</label>
+                <input type="text" class="form-control" id="medicamentoAplicado" placeholder="Medicamento aplicado">
+            </div>
+            
+            <div class="mb-3">
+                <label for="aplicadoPor" class="form-label">Aplicado por</label>
+                <input type="text" class="form-control" id="aplicadoPor" placeholder="Aplicado por">
+            </div>
+            
+            <div class="mb-3">
+                <label for="sintomas" class="form-label">Síntomas</label>
+                <textarea class="form-control" id="sintomas" placeholder="Síntomas"></textarea>
+            </div>
+            
+            <button type="button" class="btn btn-success" onclick="registrarServicio()">Registrar Servicio</button>
+        </form>
+    </div>
+    
+
+    <!-- Pantalla de carga -->
+    <div id="loading" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center flex-column align-items-center">
+                    <img src="/bg-images/vaca.gif" alt="Cargando...">
+                    <p>Cargando...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="gestionServicios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+

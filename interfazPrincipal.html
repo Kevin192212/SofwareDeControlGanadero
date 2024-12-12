@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software de Control Ganadero</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-image: url(/bg-images/bg-3.png); /* Fondo de la página */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            text-align: left;
+            padding: 110px 50px;
+            position: relative;
+        }
+
+        .main-container {
+            background-color: #00765a; /* Fondo del contenedor de las tarjetas */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centra el contenido del contenedor */
+            position: relative;
+        }
+
+        .main-container .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .main-container .row {
+            margin-bottom: 20px;
+            justify-content: center; /* Centra las tarjetas horizontalmente */
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            width: 270px; /* Ajusta la altura de las tarjetas */
+            height: 130px;
+            margin: 10px; /* Agrega margen alrededor de las tarjetas */
+        }
+
+        .card a {
+            color: #00765a; /* Color del texto del enlace */
+            text-decoration: none;
+        }
+
+        .card a:hover {
+            color: #005a43; /* Color del texto del enlace al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Contenido principal -->
+    <main class="container">
+        <div class="main-container">
+            <a href="index.html" class="back-link" style="color: white; text-decoration: none;">
+                <i class="bi bi-box-arrow-left" style="color: white;"></i> Cerrar sesión
+            </a>
+            <h1 class="text-center" style="color: white;">¿Qué quieres hacer hoy?</h1>
+            <div class="row text-center">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-body ">
+                            <a href="interfazRegistro.html"><h5>Registro animal</h5></a>
+                            <p class="card-text">Puede crear el registro por <br>cada cabeza de ganado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card ">
+                        <div class="card-body">
+                            <a href="interfazPotreros.html"><h5>Potreros</h5></a>
+                            <p class="card-text">Se podrá observar, mover y modificar la ubicacion de los animales</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="interfezHistorial.html"><h5>Ver historial</h5></a>
+                            <p class="card-text">Podra observar el historial y las estadisticas </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <a href="interfazGestion.html"><h5>Servicios</h5></a>
+                            <p class="card-text">Palpaciones, partos, medicamentos y otras</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software de Control Ganadero</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('/bg-images/bg-1.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            overflow: hidden;
+        }
+
+        .content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: flex-start;
+            padding: 1rem;
+        }
+
+        .rounded-input {
+            border-radius: 5px;
+            margin: 0 0.5rem;
+            width: 15%;
+            font-size: 1.2rem;
+        }
+
+        .contact {
+            position: absolute;
+            top: 1.5rem;
+            right: 1rem;
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s ease-out, color 0.3s ease-out;
+            /* Transición más suave para el color y el movimiento */
+        }
+
+        .contact i {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+
+        .contact:hover {
+            transform: translateY(-5px);
+            /* Movimiento más sutil hacia arriba */
+        }
+
+        .contact:hover i {
+            transform: translateY(-1px);
+            /* Movimiento más sutil hacia arriba en el icono también */
+        }
+
+        .btn-custom {
+            font-weight: bold;
+            background-color: #07b98e;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .btn-custom:hover {
+            background-color: #fff;
+            color: #218838;
+        }
+
+        .main-content {
+            width: 70%;
+            /* Aumentando el ancho */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .text-section {
+            max-width: 70%;
+            text-align: left;
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        h1 {
+            background-color: aliceblue;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+            color: #218838;
+            font-weight: bold;
+            font-size: 3rem;
+        }
+
+        .text-section h2 {
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .text-section p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            font-weight: 500;
+        }
+
+        .text-section .btn {
+            margin-top: 1rem;
+        }
+
+        #loading {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo transparente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading img {
+    width: 100px;
+    height: 100px;
+}
+
+#loading p {
+    color: #fff; /* Texto blanco */
+    font-size: 18px;
+    margin-top: 10px;
+}
+#loading .modal-content {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container content">
+        <div class="top-bar"> <input type="email" class="form-control rounded-input d-inline"
+                placeholder="Correo Electrónico" id="loginCorreo"> <input type="password"
+                class="form-control rounded-input d-inline" placeholder="Contraseña" id="loginContrasena"> <button
+                class="btn btn-custom" onclick="login()">Enviar</button> </div>
+        <div class="contact" data-bs-toggle="modal" data-bs-target="#contactModal"> <i class="bi bi-telephone-fill"></i>
+            Contáctanos </div>
+        <div class="main-content">
+            <div class="text-section">
+                <div class="header-wrapper">
+                    <h1>Bienvenido</h1>
+                </div>
+                <h2>software de control ganadero</h2>
+                <p> Nuestro software de control ganadero te permite llevar un seguimiento preciso de tus animales,
+                    optimizar la alimentación y mejorar la salud. Con herramientas intuitivas y análisis en tiempo real,
+                    maximiza tu productividad y toma decisiones informadas. ¡Empieza hoy! </p> <button
+                    class="btn btn-custom" onclick="window.location.href='registro.html'">Registrarme</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-black-50" id="contactModalLabel">Contáctanos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="list-unstyled d-flex justify-content-center align-items-center">
+                        <li class="text-success mx-1"><i class="bi bi-facebook"></i> Facebook | </li>
+                        <li class="text-success mx-1"><i class="bi bi-twitter"></i> Twitter | </li>
+                        <li class="text-success mx-1"><i class="bi bi-instagram"></i> Instagram | </li>
+                        <li class="text-success mx-1"><i class="bi bi-linkedin"></i> LinkedIn</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="loading" class="modal" tabindex="-1" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex justify-content-center flex-column align-items-center">
+                    <img src="/bg-images/vaca.gif" alt="Cargando...">
+                    <p>Cargando...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scriptsLogin.js"></script>
+</body>
+
+</html>
